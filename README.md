@@ -1,1 +1,1 @@
-# StudySync
+# StudySync: Peer Tutoring Matcher
