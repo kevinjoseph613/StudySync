@@ -9,35 +9,52 @@
 <body>
 
     <h1>StudySync</h1>
+    <h2>Create an Account</h2>
+    <p>Join StudySync to find or provide peer tutoring.</p>
+
+    <form id="registrationForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            minlength="8"
+            required
+        >
+
+        <label for="role">I want to join as a:</label>
+        <select id="role" name="role" required>
+            <option value="student">Student</option>
+            <option value="tutor">Tutor</option>
+        </select>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <p id="registrationMessage"></p>
     <h2>Find a Tutor</h2>
 
     <p>Search for students who can help you with a subject.</p>
 
-    <input type="text" placeholder="Search by subject...">
-    <button>Search</button>
+    <input
+        type="text"
+        id="subjectSearch"
+        placeholder="Search by subject..."
+    >
+
+    <button onclick="searchTutors()">Search</button>
 
     <h3>Available Tutors</h3>
 
-    <div>
-        <h4>John Smith</h4>
-        <p>Subjects: Mathematics, Physics</p>
-        <p>About: I can help students understand difficult math concepts.</p>
-        <button>Request Session</button>
+    <div id="tutorList">
     </div>
 
-    <div>
-        <h4>Sarah Johnson</h4>
-        <p>Subjects: Computer Science, Java</p>
-        <p>About: I can help with programming fundamentals.</p>
-        <button>Request Session</button>
-    </div>
-
-    <div>
-        <h4>Maria Lopez</h4>
-        <p>Subjects: English, Social Studies</p>
-        <p>About: I can help with college-level english.</p>
-        <button>Request Session</button>
-    </div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

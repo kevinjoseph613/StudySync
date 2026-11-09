@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/kevinjoseph613/StudySync#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^13.0.3",
     "express": "^5.3.0"
   }
 }
