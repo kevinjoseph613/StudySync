@@ -69,10 +69,6 @@ const tutors = [
   { id: 3, name: "Taylor", subject: "Science" }
 ];
 
-app.get("/", (req, res) => {
-  res.send("StudySync API is running!");
-});
-
 app.get("/api/tutors", (req, res) => {
   const subject = req.query.subject;
 
