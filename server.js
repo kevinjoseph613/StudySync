@@ -63,22 +63,27 @@ app.post("/api/register", async (req, res) => {
 });
 app.use(express.static(path.join(__dirname, "public")));
 
-const tutors = [
-  { id: 1, name: "Alex", subject: "Java" },
-  { id: 2, name: "Jordan", subject: "Mathematics" },
-  { id: 3, name: "Taylor", subject: "Science" }
-];
 
 app.get("/api/tutors", (req, res) => {
-  const subject = req.query.subject;
+    const subject = String(req.query.subject || "").trim();
 
-  const results = subject
-    ? tutors.filter(t =>
-        t.subject.toLowerCase().includes(subject.toLowerCase())
-      )
-    : tutors;
+    try {
+        const tutors = db.prepare(`
+            SELECT id, name, subject
+            FROM tutors
+            WHERE subject LIKE ?
+            ORDER BY name
+        `).all(`%${subject}%`);
 
-  res.json(results);
+        res.json(tutors);
+
+    } catch (error) {
+        console.error("Tutor search error:", error);
+
+        res.status(500).json({
+            error: "Unable to search tutors."
+        });
+    }
 });
 
 app.listen(3000, () => {
